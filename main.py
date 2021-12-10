@@ -1,5 +1,9 @@
 # This Python file uses the following encoding: utf-8
 import sys
+
+import boto3
+import pandas
+
 from PySide2.QtCore import QObject, Signal, Slot
 from PySide2.QtGui import QGuiApplication
 from PySide2.QtQml import QQmlApplicationEngine as qmlengine
@@ -27,8 +31,15 @@ if __name__ == "__main__":
     
     engine.rootObjects()[0].setProperty('textInputInterface', textInputInterface)
     
+    # client = boto3.client("s3",region_name="us-east-2")
     
-    textInputInterface.setText(input("enter it: "))
+    # res = client.list_buckets()
+    
+    # for bucket in rest['Buckets']:
+    #     print(bucket["Name"])
+    
+    
+    # textInputInterface.setText(input("enter it: "))
     
     sys.exit(app.exec_())
     
