@@ -43,38 +43,93 @@ Component {
 
             ColumnLayout {
                 
-                anchors {top: selection_box.top; left: selection_box.left; right: selection_box.right;}
-                height: selection_height
-                
-                // spacing: 20
+                id: picker_frame
+                anchors.fill: parent
+                // anchors {top: selection_box.top; left: selection_box.left; right: selection_box.right;}
+                // height: selection_height
+                property real p_box_height: ( selection_height * .66)
+                property real opt_box_height: ( selection_height * .12)
+
                 Rectangle { //Patient List
+                    
+
                     id: patients_box
                     color: "#4682b4"
                     Layout.alignment: Qt.AlignHCenter
-                    Layout.preferredWidth: selection_width - 40
-                    height: selection_height - (options_layout.height+100) 
-                    Layout.maximumHeight: selection_height - 100
+                    Layout.preferredWidth: selection_width * .66
+                    Layout.preferredHeight: picker_frame.p_box_height
+                    //Layout.maximumHeight: (selection_height * 2)
                 }
                 RowLayout { //Options
                     id: options_layout
                     //anchors.top: patients_box.bottom
                     Layout.alignment: Qt.AlignHCenter
                     spacing: 20
-                    Rectangle {
-                        Layout.alignment: Qt.AlignVCenter
+
+                    Item {
+                        id: cont_button_layout
+                        Layout.preferredHeight: picker_frame.opt_box_height
                         Layout.preferredWidth: selection_width/2.2
-                        height: selection_height/6-20
-                        // Layout.preferredHeight: selection_height/6-20
-                        Layout.maximumHeight: selection_height/6- 10
-                        color: "#98fb98"
+                        Layout.alignment: Qt.AlignTop
+                        MyButton {
+                            id: cont_button
+                            property var button_text: "Continue"
+                            // property real my_height:  picker_frame.opt_box_height
+                            // property real my_width: selection_width/2.2
+                            anchors.fill: parent
+                            property real font_size: 14
+                            property var font_family: "Arial"
+                            property var  my_glow: cont_glow_effect
+                            property var pri_color: "#98fb98"
+                            property var sec_color: "#87cefa"
+                            function this_funct() {
+                                console.log("butt")
+                            }
+                            property var action: this_funct
+                        }
+                        Glow {
+                            id: cont_glow_effect
+                            anchors.fill: cont_button
+                            source: cont_button
+                            samples: 25
+                            visible: true
+                            radius: 5
+                            color: "white"
+                        }
                     }
-                    Rectangle {
-                        Layout.alignment: Qt.AlignVCenter
+
+                    Item {
+                        id: create_button_layout
+                        Layout.preferredHeight: picker_frame.opt_box_height
                         Layout.preferredWidth: selection_width/2.2
-                        height: selection_height/6 - 20
-                        Layout.maximumHeight: selection_height/6-10
-                        color: "#98fb98"
+                        Layout.alignment: Qt.AlignTop
+                        MyButton {
+                            id: create_button
+                            property var button_text: "Create"
+                            // property real my_height:  picker_frame.opt_box_height
+                            // property real my_width: selection_width/2.2
+                            anchors.fill: parent
+                            property real font_size: 14
+                            property var font_family: "Arial"
+                            property var  my_glow: create_glow_effect
+                            property var pri_color: "#98fb98"
+                            property var sec_color: "#87cefa"
+                            function some_funct() {
+                                console.log("not butt")
+                            }
+                            property var action: some_funct
+                        }
+                        Glow {
+                            id: create_glow_effect
+                            anchors.fill: create_button
+                            source: create_button
+                            samples: 25
+                            visible: true
+                            radius: 5
+                            color: "white"
+                        }
                     }
+                                    
                 }
             }
         }
