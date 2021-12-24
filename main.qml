@@ -213,10 +213,24 @@ ApplicationWindow {
 
         TestPage {
             id: testPage
+            property int num: 0
+            property var stack_view: baseStackView
             property var image_to_blur: bg
             property int selection_height: mainwin.height/ 1.45
             property int selection_width: mainwin.width/ 2.2
         }
+
+        PatientCreatePage {
+            id: create_paitent
+            property int num: 1
+            property var image_to_blur: bg
+        }
+
+        // Component.onCompleted: {
+        //     baseStackView.push(create_paitent);
+        //     baseStackView.push(baseStackView.get(0));
+        // }
+
         // LoginView {
         //     id: loginView
         //         property var loginStatusMessage: ""

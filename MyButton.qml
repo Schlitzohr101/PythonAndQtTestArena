@@ -14,6 +14,7 @@ Rectangle{
     //height: my_height; width: my_width
     id: outer_box
     color: pri_color
+    radius: 5
 
     Text {
         id: box  

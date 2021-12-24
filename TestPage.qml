@@ -55,10 +55,101 @@ Component {
 
                     id: patients_box
                     color: "#4682b4"
+                    radius: 8
                     Layout.alignment: Qt.AlignHCenter
                     Layout.preferredWidth: selection_width * .66
                     Layout.preferredHeight: picker_frame.p_box_height
                     //Layout.maximumHeight: (selection_height * 2)
+
+                    ScrollView { //Patient List
+                        id: patient_scroll
+                        anchors.fill: parent
+                        anchors.margins: 5
+                        ListView { //Patient List
+                            id: patient_list
+                            model: ListModel {
+                                ListElement {name: "Gregory Smith"; age: 15}
+                                ListElement {name: "Dan Smartin"; age: 25}
+                                ListElement {name: "Dee Snutts"; age: 20}
+                                ListElement {name: "Arnold Palmer"; age: 99}
+                                ListElement {name: "Hugh Janus"; age: 33}
+                                ListElement {name: "Bob Gongus"; age: 35}
+                            }
+                            currentIndex: 0
+                            delegate: PatientDelegate {
+
+                            }
+                            // delegate: Component {
+                            //     id: patient_delegate
+                            //     Item {
+                            //         id: patient_wrapper
+                            //         height: (picker_frame.p_box_height / 6 )
+                            //         width: parent.width - 10
+                            //         focus: true
+                            //         Rectangle {
+                            //             id: patient_box
+                            //             anchors.fill: parent
+                                        
+                            //             anchors.margins: 6
+                            //             anchors.rightMargin: 16
+                                        
+                                        
+                            //             color: "#8cbed6"
+                            //             radius: 10
+                            //             Text {
+                            //                 id: patient_info
+                            //                 anchors.centerIn: parent
+                            //                 font.pointSize: 10
+                            //                 text: name + ", " + age
+                            //             }
+                            //         }
+                            //         MouseArea {
+                            //             anchors.fill: parent
+                            //             id: patient_box_mouse
+                            //             onClicked: {
+                            //                 patient_wrapper.ListView.view.currentIndex = index;
+                            //                 //console.log(index + " has been clicked");
+                            //             }
+                            //         }
+                            //         states: [ 
+                            //             State {
+                            //                 name: "currentPatient"
+                            //                 when: patient_wrapper.ListView.isCurrentItem
+                            //                 PropertyChanges {
+                            //                     target: patient_wrapper; x: 5
+                            //                 }
+                            //             }    
+                            //         ]
+                            //         transitions: [
+                            //             Transition {
+                            //                 NumberAnimation {
+                            //                     properties: "x"; duration: 200
+                            //                 }
+                            //             }
+                            //         ]
+                            //     }
+                                
+                            // }
+                            highlight: Component {
+                                id: highlight_bar
+                                Rectangle {
+                                    width: parent.width - 2
+                                    radius: 7
+                                    border.width: 2
+                                    border.color: "black"
+                                    color: "#98fb98"
+                                    y: patient_list.currentItem.y
+                                    Behavior on y { SpringAnimation { spring: 2; damping: 0.2 } }
+                                }
+                            }
+                            spacing: 5
+
+                        }
+
+
+                    }
+
+
                 }
                 RowLayout { //Options
                     id: options_layout
@@ -82,8 +173,9 @@ Component {
                             property var  my_glow: cont_glow_effect
                             property var pri_color: "#98fb98"
                             property var sec_color: "#87cefa"
+             
                             function this_funct() {
-                                console.log("butt")
+                                console.log("launching the Patient Overview")
                             }
                             property var action: this_funct
                         }
@@ -114,8 +206,13 @@ Component {
                             property var  my_glow: create_glow_effect
                             property var pri_color: "#98fb98"
                             property var sec_color: "#87cefa"
+                            property var create_patient: PatientCreatePage {
+                                property int num: 1
+                                property var image_to_blur: bg
+                            }
                             function some_funct() {
-                                console.log("not butt")
+                                console.log("launching the Patient Creation Page");
+                                stack_view.push(create_patient);
                             }
                             property var action: some_funct
                         }
