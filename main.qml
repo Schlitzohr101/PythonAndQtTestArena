@@ -273,9 +273,9 @@ ApplicationWindow {
     //     font.pixelSize: 26
     // }
     Behavior on x {
-        NumberAnimation { duration: 1000 }
+        NumberAnimation { duration: 13 }
     }
     Behavior on y {
-        NumberAnimation  { duration: 1000 }        
+        NumberAnimation  { duration:13 }        
     }
 }

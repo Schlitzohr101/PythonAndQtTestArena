@@ -32,6 +32,7 @@ Component {
             radius: 60
         }
 
+
         Rectangle {
             id: creation_box
             color: "#87cefa"
