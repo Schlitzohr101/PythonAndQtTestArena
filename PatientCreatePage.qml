@@ -10,8 +10,8 @@ Component {
         anchors.fill: parent
         clip: true
 
-        property var form_height: height*.66
-        property var form_width: width*.5
+        property var form_height: height*.92
+        property var form_width: width*.67
         //property var imageToGlass: glass
 
         // Image {
@@ -36,15 +36,18 @@ Component {
             anchors.centerIn: parent
             height: form_height
             width: form_width
+
+            property int item_cnt: 3 
+
             ColumnLayout {
                 id: patient_input_frame
                 anchors.fill: parent
-                
+                spacing: 3
                 SplitView {
                     id: basic_info_boxes
                     //anchors {top: parent.top; left:parent.left; right: parent.right}
                     Layout.alignment: Qt.AlignHCenter
-                    height: form_height*.333
+                    height: (form_height/creation_box.item_cnt)-(10*(creation_box.item_cnt-1))
                     orientation: Qt.Horizontal
 
                     Rectangle {
@@ -67,7 +70,14 @@ Component {
                     id: notes_box
                     color: "blue"
                     width: form_width-50
-                    height: form_height*.333
+                    height: (form_height/creation_box.item_cnt)-(10*(creation_box.item_cnt-1))
+                    Layout.alignment: Qt.AlignHCenter
+                }
+                Rectangle {
+                    id: additional_info
+                    color: "yellow"
+                    height: (form_height/creation_box.item_cnt)-(10*(creation_box.item_cnt-1))
+                    width: (form_width-25)
                     Layout.alignment: Qt.AlignHCenter
                 }
             }

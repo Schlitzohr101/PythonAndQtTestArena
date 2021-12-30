@@ -263,13 +263,16 @@ ApplicationWindow {
     // }
     
 
-    Text {
+    // Text {
         
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.bottom: parent.bottom
+    //     anchors.horizontalCenter: parent.horizontalCenter
+    //     anchors.bottom: parent.bottom
         
         
-        text: someText
-        font.pixelSize: 26
-    }
+    //     text: someText
+    //     font.pixelSize: 26
+    // }
+
+    NumberAnimation on x { duration: 1000 }
+    NumberAnimation on y { duration: 1000 }
 }
