@@ -178,6 +178,7 @@ Component {
                                 console.log("launching the Patient Overview")
                             }
                             property var action: this_funct
+                            
                         }
                         Glow {
                             id: cont_glow_effect

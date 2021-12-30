@@ -272,7 +272,10 @@ ApplicationWindow {
     //     text: someText
     //     font.pixelSize: 26
     // }
-
-    NumberAnimation on x { duration: 1000 }
-    NumberAnimation on y { duration: 1000 }
+    Behavior on x {
+        NumberAnimation { duration: 1000 }
+    }
+    Behavior on y {
+        NumberAnimation  { duration: 1000 }        
+    }
 }
