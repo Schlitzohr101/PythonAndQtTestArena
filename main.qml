@@ -224,6 +224,7 @@ ApplicationWindow {
             id: create_paitent
             property int num: 1
             property var image_to_blur: bg
+            property var stack_view: baseStackView
         }
 
         // Component.onCompleted: {

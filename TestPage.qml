@@ -162,7 +162,7 @@ Component {
                         Layout.preferredHeight: picker_frame.opt_box_height
                         Layout.preferredWidth: selection_width/2.2
                         Layout.alignment: Qt.AlignTop
-                        MyButton {
+                        MyTextButton {
                             id: cont_button
                             property var button_text: "Continue"
                             // property real my_height:  picker_frame.opt_box_height
@@ -196,7 +196,7 @@ Component {
                         Layout.preferredHeight: picker_frame.opt_box_height
                         Layout.preferredWidth: selection_width/2.2
                         Layout.alignment: Qt.AlignTop
-                        MyButton {
+                        MyTextButton {
                             id: create_button
                             property var button_text: "Create"
                             // property real my_height:  picker_frame.opt_box_height
