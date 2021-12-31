@@ -1,5 +1,5 @@
-import QtQuick 2.7
-import QtQuick.Controls 1.1
+import QtQuick 2.15
+import QtQuick.Controls 2.15
 import QtGraphicalEffects 1.15
 import QtQuick.Layouts 1.15
 
@@ -38,7 +38,9 @@ Component {
             color: "#87cefa"
             border.width: 4
             radius: 10
-            anchors.centerIn: parent
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.left: parent.left
+            anchors.leftMargin: 100
             height: form_height
             width: form_width
 
@@ -62,20 +64,57 @@ Component {
                     Layout.preferredHeight: creation_box.item_height
                     width: patient_input_frame.width - 25
                     orientation: Qt.Horizontal
+                    // resizing: false
 
                     Rectangle {
                         id: id_box
-                        color: "red"
-                        Layout.minimumWidth: patient_input_frame.width/2
+                        color: "#448ee4"
+                        radius: 5
+                        border.width: 2
+                        SplitView.preferredWidth: patient_input_frame.width/2 - 20
                         
-                        Layout.fillWidth: true
+                        Rectangle {
+                            id: paitent_id_box
+                            anchors {top: parent.top; right: parent.right}
+                            anchors.topMargin: 20; anchors.rightMargin: 20
+                            height: id_box.height/4
+                            width: id_box.width/2
+                            border.width: 1
+                            color: "white"
+
+                            TextInput {
+                                id: paitent_id
+                                
+                                anchors.fill: parent
+                                anchors.leftMargin: 10
+                                
+                                color: "black"
+                                wrapMode: TextInput.Wrap
+                                maximumLength: 50
+                                font.pointSize: 10
+                            }
+                        }
+
+                        Text {
+                            id: paitent_id_text
+                            anchors {top: paitent_id_box.top; right: paitent_id_box.left}
+                            text: "Patient Id"
+                            font.family: "Inconsolata"
+                            font.pointSize: 14
+                        }
+
+                        
+
+                        
+                        //Layout.fillWidth: true
                         
                     }
                     Rectangle {
                         id: date_box
                         color: "green"
                         
-                        width: patient_input_frame.width/2
+                        SplitView.preferredWidth: glass.form_width/2 - 20
+                        SplitView.fillWidth: true
 
                     }
                 }
@@ -90,13 +129,13 @@ Component {
                     id: additional_info
                     color: "yellow"
                     Layout.preferredHeight: creation_box.item_height
-                    width: (form_width-25)
+                    width: patient_input_frame.width-25
                     Layout.alignment: Qt.AlignHCenter
                 }
                 Rectangle {
                     id: notes_box
                     color: "blue"
-                    width: form_width-50
+                    width: patient_input_frame.width-50
                     Layout.preferredHeight: creation_box.item_height
                     Layout.alignment: Qt.AlignHCenter
                 }
@@ -105,11 +144,11 @@ Component {
 
         Item {
             id: back_button_layout
-            height: creation_box.height/6
-            width: height
-            anchors.rightMargin: 20
-            anchors.topMargin: 20
-            anchors {right: creation_box.left; top: creation_box.top;}
+            width: (glass.width - creation_box.width)/4 - 20
+            height: width
+            anchors.leftMargin: 20
+            anchors.bottomMargin: 20
+            anchors {left: creation_box.right; bottom: creation_box.bottom;}
             MyImgButton {
                 id: back_button
                 
@@ -131,7 +170,40 @@ Component {
                 samples: 25
                 visible: true
                 radius: 5
-                color: "white"
+                color: "#8b0000"
+            }
+        }
+
+        Item {
+            id: next_button_layout
+            width: (glass.width - creation_box.width)/4 - 20
+            height: width
+            anchors.leftMargin: 20
+            anchors.bottomMargin: 20
+            anchors {left: back_button_layout.right; bottom: creation_box.bottom;}
+            MyImgButton {
+                id: next_button
+                
+                anchors.fill: parent
+                
+                property var my_source: "./images/next.png"
+                property var my_glow: next_glow_effect
+                // property var my_height: creation_box.height/6
+                // property var my_width: height
+                function next_patient_select() {
+                    console.log("next button pressed")
+                }
+                property var action: next_patient_select
+
+            }
+            Glow {
+                id: next_glow_effect
+                anchors.fill: next_button
+                source: next_button
+                samples: 25
+                visible: true
+                radius: 5
+                color: "#8fbc8f"
             }
         }
 
