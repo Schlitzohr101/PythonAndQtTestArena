@@ -3,6 +3,9 @@ import QtQuick.Controls 2.2
 import QtGraphicalEffects 1.15
 import QtQuick.Layouts 1.15
 
+import "./tools"
+import "./tools/components"
+
 Component {
     id: testPage
     // Rectangle {
@@ -33,9 +36,9 @@ Component {
 
         Rectangle {
             id: selection_box
-            color: "#87cefa"
+            color: "#171010"
             border.width: 4
-            
+            border.color: "white"
             anchors.centerIn: parent
             height: selection_height
             width: selection_width
@@ -54,7 +57,7 @@ Component {
                     
 
                     id: patients_box
-                    color: "#4682b4"
+                    color: "#2b2b2b"
                     radius: 8
                     Layout.alignment: Qt.AlignHCenter
                     Layout.preferredWidth: selection_width * .66
@@ -79,7 +82,7 @@ Component {
                             // model: Qt.fontFamilies()
                             currentIndex: 0
                             delegate: PatientDelegate {
-
+                                
                             }
 
                             // delegate: Item {
@@ -134,8 +137,8 @@ Component {
                             property real font_size: 14
                             property var font_family: "Arial"
                             property var  my_glow: cont_glow_effect
-                            property var pri_color: "#98fb98"
-                            property var sec_color: "#87cefa"
+                            property var pri_color: "#423F3E"
+                            property var sec_color: "white"
              
                             function this_funct() {
                                 console.log("launching the Patient Overview")
@@ -168,8 +171,8 @@ Component {
                             property real font_size: 14
                             property var font_family: "Arial"
                             property var  my_glow: create_glow_effect
-                            property var pri_color: "#98fb98"
-                            property var sec_color: "#87cefa"
+                            property var pri_color: "#423F3E"
+                            property var sec_color: "white"
                             property var create_patient: PatientCreatePage {
                                 property int num: 1
                                 property var image_to_blur: bg

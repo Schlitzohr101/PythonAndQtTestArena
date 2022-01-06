@@ -22,6 +22,7 @@ Rectangle{
         font.pointSize: font_size
         anchors.centerIn: parent
         text: button_text
+        color: sec_color
     }
 
     MouseArea {

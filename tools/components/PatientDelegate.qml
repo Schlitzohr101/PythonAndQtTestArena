@@ -17,13 +17,14 @@ Component {
             anchors.rightMargin: 16
             
             
-            color: "#8cbed6"
+            color: "#171010"
             radius: 10
             Text {
                 id: patient_info
                 anchors.centerIn: parent
                 font.pointSize: 10
                 text: name + ", " + age
+                color: "white"
             }
         }
         MouseArea {
