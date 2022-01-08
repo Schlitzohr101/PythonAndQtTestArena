@@ -11,7 +11,7 @@ ApplicationWindow {
     title: "Demo MainWindow"
     flags: Qt.FramelessWindowHint
     id: mainwin
-    color: "#448ee4"
+    color: "black"
 
     property int spaceBtw : mainwin.height/40
     property int boxheight :40
